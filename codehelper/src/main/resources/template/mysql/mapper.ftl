@@ -12,7 +12,4 @@ import ${packageName}.bo.${className};
  */
 @MyBatisDao
 public interface ${className}Mapper extends BaseMapper<${className},Long> {
-
-    
-
 }

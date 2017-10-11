@@ -1,4 +1,4 @@
-package ald.rc.coder;
+package ald.rc.codehelper.orm;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,35 +13,17 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class DBUtil {
-
-	public static String MYSQL_USER = "user";
-	public static String MYSQLPASSWORD = "123456";
-	public static String DB_NAME = "risk";
-	public static String URL = "jdbc:mysql://localhost:3306/" + DB_NAME + "?useUnicode=true&characterEncoding=utf8";
+public class Util {
 
 	public static Connection getConn() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = DriverManager.getConnection(URL, MYSQL_USER, MYSQLPASSWORD);
+			Connection conn = DriverManager.getConnection(OrmHelper.DB_DATABASE_URL, OrmHelper.DB_MYSQL_USER, OrmHelper.DB_MYSQL_PASSWORD);
 			return conn;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-	public static void close(Statement stmt, Connection conn) {
-		try {
-			if (null != stmt) {
-				stmt.close();
-			}
-			if (null != conn) {
-				conn.close();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	public static List<Table> getTableList(String dbName) {
@@ -56,8 +38,11 @@ public class DBUtil {
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Table table = new Table();
+				table.setDatabase(dbName);
 				table.setTableName(rs.getString("table_name"));
 				table.setTableComment(rs.getString("table_comment"));
+				List<Column> columns = getList(dbName, table.getTableName());
+				table.setColumns(columns);
 				tables.add(table);
 			}
 			rs.close();
@@ -246,6 +231,20 @@ public class DBUtil {
 			e.printStackTrace();
 			System.err.println(descFileName + " 文件创建失败!");
 			return false;
+		}
+	}
+	
+	
+	public static void close(Statement stmt, Connection conn) {
+		try {
+			if (null != stmt) {
+				stmt.close();
+			}
+			if (null != conn) {
+				conn.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

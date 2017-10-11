@@ -1,11 +1,11 @@
-package ald.rc.coder;
+package ald.rc.codehelper.orm;
 
 import freemarker.template.utility.StringUtil;
 
 public class UsedColumn extends Column {
 
 	public String getAccessColumnName(){
-		String accessName = StringUtil.capitalize(DBUtil.underscore2Camelcase(getColumnName(), Create.priff));
+		String accessName = StringUtil.capitalize(Util.underscore2Camelcase(getColumnName(),OrmHelper.DB_TABLE_PREFIXX));
 		return accessName;
 	}
 	public String getFieldName(){
@@ -13,17 +13,17 @@ public class UsedColumn extends Column {
 	}
 	
 	public String getJdbcType(){
-		return DBUtil.sqlTypeToJdbcType(super.getDataType());
+		return Util.sqlTypeToJdbcType(super.getDataType());
 	}
 	
 	@Override
 	public String getColumnName(){
-		return DBUtil.underscore2Camelcase(super.getColumnName(), Create.priff);
+		return Util.underscore2Camelcase(super.getColumnName(), OrmHelper.DB_TABLE_PREFIXX);
 	}
 	
 	@Override
 	public String getDataType(){
-		String javaDataType = DBUtil.sqlTypeToJavaType(super.getDataType());
+		String javaDataType = Util.sqlTypeToJavaType(super.getDataType());
 		return javaDataType;
 		
 	}
