@@ -1,5 +1,7 @@
 package ald.rc.api;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,14 +14,16 @@ import ald.rc.api.core.EventContext;
 @Scope(value = "prototype")
 public class LoanController extends EventBaseController<LoanModel> {
 
+	private static final Logger logger = LoggerFactory.getLogger(LoanController.class);
 	@Override
-	protected EventContext getEventContext(LoanModel t) {
+	protected EventContext getEventContext(LoanModel t) { 
 		return null;
 	}
 
 	@RequestMapping(value = ApiPath.LOAN_ASY)
 	public void loanAsy() {
-
+		logger.info("xxxx");
+		System.out.println("helloer");
 	}
 
 	@RequestMapping(value = ApiPath.LOAN_SYN)
