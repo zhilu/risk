@@ -21,13 +21,12 @@ public class LoanController extends EventBaseController<LoanModel> {
 	}
 
 	@RequestMapping(value = ApiPath.LOAN_ASY)
-	public void loanAsy() {
-		logger.info("xxxx");
-		System.out.println("helloer");
+	public void loanAsy(LoanModel model) {
+		logger.info("{}",model);
 	}
 
 	@RequestMapping(value = ApiPath.LOAN_SYN)
-	public void loanSyn() {
+	public void loanSyn(LoanModel model) {
 
 	}
 
