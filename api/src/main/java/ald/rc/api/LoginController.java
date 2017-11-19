@@ -11,16 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.google.common.collect.Maps;
 
 import ald.rc.api.bo.LoginModel;
+import ald.rc.api.bo.LoginResult;
 import ald.rc.api.core.EventBaseController;
 import ald.rc.api.core.EventContext;
 
 @Controller
 @Scope(value="prototype")
-public class LoginController extends EventBaseController <LoginModel> {
+public class LoginController extends EventBaseController <LoginModel,LoginResult> {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	@Override
-	protected EventContext getEventContext(LoginModel t) {
+	protected EventContext<LoginResult> getEventContext(LoginModel m) {
+		
 		return null;
 	}
 	

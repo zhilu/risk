@@ -1,7 +1,7 @@
 package ald.rc.api.core;
 
-public interface EventHandler {
-	boolean preHandle(EventContext eventContext);
-	EventResult handleEvent(EventContext eventContext);
-	void postHandle(EventContext eventContext);
+public interface EventHandler<R> {
+	boolean preHandle(EventContext<R> eventContext);
+	void handleEvent(EventContext<R> eventContext);
+	void postHandle(EventContext<R> eventContext);
 }

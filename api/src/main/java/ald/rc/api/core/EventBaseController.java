@@ -1,23 +1,21 @@
 package ald.rc.api.core;
 
-public abstract class EventBaseController <T> extends BaseController implements EventHandler{
+public abstract class EventBaseController <M, R> extends BaseController implements EventHandler<R>{
 
-	protected abstract EventContext getEventContext(T t);
+	protected abstract EventContext<R> getEventContext(M m);
 	
 	@Override
-	public boolean preHandle(EventContext eventContext) {
-		// TODO Auto-generated method stub
+	public boolean preHandle(EventContext<R> eventContext) {
+		eventContext.loadData();
 		return false;
 	}
 
 	@Override
-	public EventResult handleEvent(EventContext eventContext) {
-		// TODO Auto-generated method stub
-		return null;
+	public void handleEvent(EventContext<R> eventContext) {
 	}
 
 	@Override
-	public void postHandle(EventContext eventContext) {
+	public void postHandle(EventContext<R> eventContext) {
 		// TODO Auto-generated method stub
 		
 	}
