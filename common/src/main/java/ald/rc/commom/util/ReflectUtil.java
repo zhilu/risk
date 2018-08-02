@@ -33,7 +33,7 @@ public class ReflectUtil {
      * @param modifiers
      * @return 常量返回true，非常量返回false
      */
-    private static boolean isConstant(int modifiers) {
+    public static boolean isConstant(int modifiers) {
         if (Modifier.isStatic(modifiers) && Modifier.isFinal(modifiers)) {
             return true;
         }
