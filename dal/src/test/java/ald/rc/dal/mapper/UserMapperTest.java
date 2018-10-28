@@ -14,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import ald.rc.dal.Main;
-import ald.rc.dal.bo.User;
+import ald.rc.dal.bo.SystemUser;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:config/dao-beans.xml"})
@@ -29,7 +29,7 @@ public class UserMapperTest {
 	protected ApplicationContext ctx;
 
 	@Autowired
-	private UserMapper userMapper;
+	private SystemUserMapper systemUserMapper;
 
 	@Test
 	public void testApplicationContext() {
@@ -38,16 +38,9 @@ public class UserMapperTest {
 
 	@Test
 	public void testMapper() {
-		User user = userMapper.findByPrimary(8871L);
-		logger.info(user.getPhone());
-		Assert.assertEquals(user.getConsumerno(), "97");
+		SystemUser user = systemUserMapper.findByPrimary(8871L);
+		Assert.assertEquals(user.getId(), "97");
 	}
 	
-	@Test
-	public void testPage(){
-		List<User> users = userMapper.listSelective(new HashMap<String,String>());
-		logger.info(users.size());
-		Assert.assertNotNull(users);
-	}
 
 }

@@ -5,8 +5,9 @@ import org.apache.log4j.PropertyConfigurator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import ald.rc.dal.bo.User;
-import ald.rc.dal.mapper.UserMapper;
+import ald.rc.dal.bo.SystemUser;
+import ald.rc.dal.mapper.SystemUserMapper;
+
 
 public class Main {
     
@@ -17,8 +18,8 @@ public class Main {
 
     public static void main(String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("config/dao-beans.xml");
-        UserMapper mapper  = ctx.getBean(UserMapper.class);
-        User user = mapper.findByPrimary(8871L);
+        SystemUserMapper mapper  = ctx.getBean(SystemUserMapper.class);
+        SystemUser user = mapper.findByPrimary(8871L);
         logger.info(user);
         logger.info(ctx);
     }
