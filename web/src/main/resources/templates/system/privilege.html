@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<head th:replace="@{~/layout/head.html}"></head>
+<title>管理后台</title>
+</head>
+
+<body>
+
+  <div th:replace="@{~/layout/menu.html}"></div>
+
+  <div id="page-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <ul class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">系统管理</a></li>
+            <li class="active">权限管理</li>
+        </ul>
+      </div>
+
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="firstname" class="col-sm-2 col-md-1 control-label">名字：</label>
+          <div class="col-sm-3 col-md-3">
+            <input type="text" class="form-control" id="firstname" placeholder="请输入名字">
+          </div>
+          <button type="submit" class="btn btn-default">查询</button>
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <table class="table-responsive table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>编码</th>
+                <th>备注</th>
+                <th>创建时间</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="odd gradeX">
+                <td>Trident</td>
+                <td>Internet Explorer 4.0</td>
+                <td>Win 95+</td>
+                <td class="center">4</td>
+                <td class="center">X</td>
+              </tr>
+              <tr class="even gradeC">
+                <td>Trident</td>
+                <td>Internet Explorer 5.0</td>
+                <td>Win 95+</td>
+                <td class="center">5</td>
+                <td class="center">C</td>
+              </tr>
+              <tr class="odd gradeA">
+                <td>Trident</td>
+                <td>Internet Explorer 5.5</td>
+                <td>Win 95+</td>
+                <td class="center">5.5</td>
+                <td class="center">A</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row col-offset-6">
+        <div class="col-md-3 col-md-offset-9">
+          <ul class="pagination">
+            <li>
+              <a href="#">&laquo;</a>
+            </li>
+            <li>
+              <a href="#">1</a>
+            </li>
+            <li>
+              <a href="#">2</a>
+            </li>
+            <li>
+              <a href="#">3</a>
+            </li>
+            <li>
+              <a href="#">4</a>
+            </li>
+            <li>
+              <a href="#">5</a>
+            </li>
+            <li>
+              <a href="#">&raquo;</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div th:replace="@{~/layout/js.html}"></div>
+</body>
+
+</html>
