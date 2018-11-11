@@ -2,16 +2,10 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<head th:replace="@{~/layout/head.html}"></head>
-<title>管理后台</title>
 </head>
 
 <body>
-
-  <div th:replace="@{~/layout/menu.html}"></div>
-
-  <div id="page-wrapper">
-    <div class="container-fluid">
+    <div th:fragment="privilege" class="container-fluid">
       <div class="row">
         <ul class="breadcrumb">
           <li>
@@ -91,6 +85,7 @@
           </table>
         </div>
       </div>
+      
       <div class="row col-offset-6">
         <div class="col-md-3 col-md-offset-9">
           <ul class="pagination">
@@ -164,11 +159,7 @@
       </div>
 
     </div>
-  </div>
-
-  <div th:replace="@{~/layout/js.html}"></div>
-
-  <script>
+    <script>
 			$('#edit').on('show.bs.modal', function(event) {
 				var btnThis = $(event.relatedTarget); //触发事件的按钮
 				var modal = $(this); //当前模态框
@@ -183,7 +174,7 @@
 				modal.find('#code').val(code);
 				modal.find('#remark').val(remark);
 			});
-		</script>
+	</script>
 </body>
 
 </html>

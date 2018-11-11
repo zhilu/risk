@@ -2,9 +2,16 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
+<head th:replace="@{~/layout/head.html}"></head>
+<title>管理后台</title>
 </head>
+
 <body>
-    <div th:fragment="userList" class="container-fluid">
+
+  <div th:replace="@{~/layout/menu.html}"></div>
+
+  <div id="page-wrapper">
+    <div class="container-fluid">
       <div class="row">
         <ul class="breadcrumb">
           <li>
@@ -13,7 +20,7 @@
           <li>
             <a href="#">系统管理</a>
           </li>
-          <li class="active">用戶管理</li>
+          <li class="active">权限管理</li>
         </ul>
       </div>
 
@@ -33,8 +40,8 @@
             <thead>
               <tr>
                 <th>编号</th>
-                <th>用戶名称</th>
-                <th>角色</th>
+                <th>权限名称</th>
+                <th>编码</th>
                 <th>备注</th>
                 <th>创建时间</th>
                 <th>操作</th>
@@ -156,7 +163,28 @@
           </div>
         </div>
       </div>
+
     </div>
+  </div>
+
+  <div th:replace="@{~/layout/js.html}"></div>
+
+  <script>
+      $('#edit').on('show.bs.modal', function(event) {
+        var btnThis = $(event.relatedTarget); //触发事件的按钮
+        var modal = $(this); //当前模态框
+        var tds = btnThis.closest('tr').find('td')
+        var id = tds.eq(0).text();
+        var name = tds.eq(1).text();
+        var code = tds.eq(2).text();
+        var remark = tds.eq(3).text();
+        console.log(id,name,code,remark)
+        modal.find('#id').val(id);
+        modal.find('#name').val(name);
+        modal.find('#code').val(code);
+        modal.find('#remark').val(remark);
+      });
+    </script>
 </body>
 
 </html>

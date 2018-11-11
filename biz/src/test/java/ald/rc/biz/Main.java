@@ -18,8 +18,8 @@ public class Main {
 	public static void main(String[] args) {
 		ctx = new ClassPathXmlApplicationContext("config/service-beans.xml");
 		logger.info(ctx);
-		UserService userService =  ctx.getBean(UserService.class);
-		userService =  (UserService) ctx.getBean("userService");
+		SystemUserService userService =  ctx.getBean(SystemUserService.class);
+		userService =  (SystemUserService) ctx.getBean("userService");
 		logger.info(userService.page(1, 10).getList().get(1));
 	}
 }

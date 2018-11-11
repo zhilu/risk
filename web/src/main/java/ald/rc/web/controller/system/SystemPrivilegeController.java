@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SystemPrivilegeController {
 	
-	@RequestMapping("/system/privilege.html")
+	@RequestMapping("/system/privilege")
 	public String index() {
 		
-		System.out.println("pppppppppppppppppp");
-		return "/system/privilege.html";
+		System.out.println("privilege");
+		return "system/privilege :: privilege";
 	}
 }

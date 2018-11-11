@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+</head>
+
+<body>
+  <div th:fragment="setting" class="container-fluid">
+      <div class="container-fluid">
+
+        <div class="row">
+          <ul class="breadcrumb">
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">用户管理</a>
+            </li>
+            <li class="active">个人中心</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">基础信息</h3>
+        </div>
+        <div class="panel-body">
+          <div class="media">
+            <div class="media-left">
+              <img src="~/static/avatar.jpg" th:src="@{~/static/avatar.jpg}" class="media-object" style="width: 200px">
+            </div>
+            <div class="media-body">
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">账号：</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" id="firstname" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="lastname" class="col-sm-2 control-label">手机号:</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" id="lastname" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="lastname" class="col-sm-2 control-label">邮箱：</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" id="lastname" disabled>
+                </div>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title">安全信息</h3>
+        </div>
+        <div class="panel-body">
+          <div class="well">
+            <div class="row">
+              <div class="col-md-1">
+              <span class="fa fa-envelope-o"></span>
+              </div>
+              <div class="col-md-3">邮箱</div>
+              <div class="col-md-6">sssss</div>
+              <div class="col-md-2">
+                 <button type="button" class="btn btn-success">修改</button>
+              </div>
+            </div>
+          </div>
+          <div class="well">
+            <div class="row">
+              <div class="col-md-1">
+              <span class="fa fa-phone"></span>
+              </div>
+              <div class="col-md-3">手机</div>
+              <div class="col-md-6">sssss</div>
+              <div class="col-md-2">
+                 <button type="button" class="btn btn-success">修改</button>
+              </div>
+            </div>
+          </div>
+          <div class="well">
+            <div class="row">
+              <div class="col-md-1">
+              <span class="fa fa-comments "></span>
+              </div>
+              <div class="col-md-3">微信</div>
+              <div class="col-md-6">sssss</div>
+              <div class="col-md-2">
+              <button type="button" class="btn btn-success">修改</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</body>
+
+</html>

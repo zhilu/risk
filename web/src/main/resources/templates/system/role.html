@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <div th:fragment="roleList" class="container-fluid">
+      <div class="row">
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">系统管理</a>
+          </li>
+          <li class="active">角色管理</li>
+        </ul>
+      </div>
+
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="firstname" class="col-sm-2 col-md-1 control-label">权限：</label>
+          <div class="col-sm-3 col-md-3">
+            <input type="text" class="form-control" id="firstname" placeholder="请输入权限名称">
+          </div>
+          <button type="submit" class="btn btn-default">查询</button>
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <table class="table-responsive table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>角色名称</th>
+                <th>权限</th>
+                <th>备注</th>
+                <th>创建时间</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="odd gradeX">
+                <td>Trident</td>
+                <td>Internet Explorer 4.0</td>
+                <td>Win 95+</td>
+                <td class="center">4</td>
+                <td class="center">X</td>
+                <td>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit">编辑</button>
+                    <button type="button" class="btn btn-default">删除</button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="even gradeC">
+                <td>Trident</td>
+                <td>Internet Explorer 5.0</td>
+                <td>Win 95+</td>
+                <td class="center">5</td>
+                <td class="center">C</td>
+                <td>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default">编辑</button>
+                    <button type="button" class="btn btn-default">删除</button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="odd gradeA">
+                <td>Trident</td>
+                <td>Internet Explorer 5.5</td>
+                <td>Win 95+</td>
+                <td class="center">5.5</td>
+                <td class="center">A</td>
+                <td>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-primary">编辑</button>
+                    <button type="button" class="btn btn-danger">删除</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div class="row col-offset-6">
+        <div class="col-md-3 col-md-offset-9">
+          <ul class="pagination">
+            <li>
+              <a href="#">&laquo;</a>
+            </li>
+            <li>
+              <a href="#">1</a>
+            </li>
+            <li>
+              <a href="#">2</a>
+            </li>
+            <li>
+              <a href="#">3</a>
+            </li>
+            <li>
+              <a href="#">4</a>
+            </li>
+            <li>
+              <a href="#">5</a>
+            </li>
+            <li>
+              <a href="#">&raquo;</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="title">编辑权限</h4>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="id" class="col-sm-3 control-label">编号：</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="id" disabled ></input>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name" class="col-sm-3 control-label ">权限名称：</label>
+                  <div class="col-sm-8">
+                    <input type="text" class=" form-control" id="name"></input>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="code" class="col-sm-3 control-label">编码：</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="code"></input>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="remark" class="col-sm-3 control-label">备注：</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="remark"></input>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  <script>
+      $('#edit').on('show.bs.modal', function(event) {
+        var btnThis = $(event.relatedTarget); //触发事件的按钮
+        var modal = $(this); //当前模态框
+        var tds = btnThis.closest('tr').find('td')
+        var id = tds.eq(0).text();
+        var name = tds.eq(1).text();
+        var code = tds.eq(2).text();
+        var remark = tds.eq(3).text();
+        console.log(id,name,code,remark)
+        modal.find('#id').val(id);
+        modal.find('#name').val(name);
+        modal.find('#code').val(code);
+        modal.find('#remark').val(remark);
+      });
+    </script>
+</body>
+
+</html>

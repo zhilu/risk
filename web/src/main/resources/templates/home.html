@@ -3,17 +3,56 @@
 <head>
   <meta charset="utf-8">
   
-  <head th:replace="@{~/layout/head.html}"></head>
-  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="shi">
   <title>管理后台</title>
+  
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="~/static/sb-admin-2.css" th:href="@{~/static/sb-admin-2.css}" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/metisMenu/3.0.3/metisMenu.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/morris.js/0.5.1/morris.css" rel="stylesheet" type="text/css">
+  
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  
+
 </head>
 
 <body>
   <div id="wrapper">
-    <div th:replace="@{~/layout/menu.html}"></div>
-
-    <div th:replace="@{~/layout/js.html}"></div>
+    <div th:replace="layout/menu :: menu">
+    </div>
+    
+     <div id="page-wrapper">
+     </div>
   </div>
+  
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.bootcss.com/metisMenu/3.0.3/metisMenu.min.js"></script>
+  <script src="https://cdn.bootcss.com/morris.js/0.5.1/morris.min.js"></script>
+  <script src="./static/sb-admin-2.js"></script>
+  <script src="./static/morris-data.js"></script>
+  <script>
+    function loadPage(url) {
+    	 $('#side-menu').find('a').each(function () {
+             if (this.href == document.location.href || document.location.href.search(this.href) >= 0) {
+                 $(this).parent().addClass('active'); 
+             }
+         });
+    	console.log('xxxxxxxxx')
+    	console.log(url)
+	    $("#page-wrapper").load(url);
+    	
+	}
+  </script>
 </body>
 
 </html>

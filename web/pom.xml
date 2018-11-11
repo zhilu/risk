@@ -47,5 +47,10 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>alading</groupId>
+			<artifactId>biz</artifactId>
+			<version>0.0.1</version>
+		</dependency>
 	</dependencies>
 </project>

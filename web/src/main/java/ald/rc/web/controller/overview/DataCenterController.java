@@ -1,15 +1,14 @@
-package ald.rc.web.controller.system;
+package ald.rc.web.controller.overview;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class SystemRoleController {
+public class DataCenterController {
 	
-	@RequestMapping("system/role")
+	@RequestMapping("overview/center")
 	public String index() {
-		return "system/role :: roleList";
-		
+		return "overview/center :: center";
 	}
 
 }
